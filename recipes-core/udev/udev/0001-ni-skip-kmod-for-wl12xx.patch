@@ -4,7 +4,7 @@ index 8551f47..ac8bb60 100644
 +++ b/rules/80-drivers.rules
 @@ -2,6 +2,9 @@
  
- ACTION=="remove", GOTO="drivers_end"
+ ACTION!="add", GOTO="drivers_end"
  
 +# skip kmod for wl12xx device to prevent 30s delay issues with 3.2 kernel
 +ENV{MODALIAS}=="platform:wl12xx", GOTO="drivers_end"
